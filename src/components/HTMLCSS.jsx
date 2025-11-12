@@ -7,8 +7,7 @@ function HTMLCSS() {
   return (
     <section>
 
-      <div className ="info-course">I kursen HTML och CSS fick vi lära oss att använda HTML och CSS för att bygga en webbsida utifrån en färdig design. Vi testade också på att anända olika CSS-ramverk såsom Tailwind och Bootstrap. Vi lärde oss även lite grundläggande Javascript för att bygga vissa delar på webbsidan, så som en FAQ-Accordion och en hantering för mörkt tema.
-
+      <div className ="info-course">I kursen HTML och CSS fick vi lära oss att bygga en webbsida utifrån en färdig design med hjälp av HTML och CSS. Under kursens gång testade vi även olika CSS-ramverk, såsom Tailwind och Bootstrap. Vi gick också igenom grundläggande JavaScript för att skapa interaktiva delar på webbsidan, som en FAQ-accordion och en funktion för mörkt tema.
        
        <h3>Projekt HTML&CSS - Silicon </h3>
        <h4><a href="https://github.com/jeanettesamuelsson/SiliconV2" target="_blank" >GitHub-länk</a></h4>

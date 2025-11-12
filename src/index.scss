@@ -151,7 +151,7 @@ button:hover {
 }
 
 .divider {
-  margin: 1rem 0;
+  margin: 3rem 0;
   height: 1px;
   background-color: #444;
   width: 80%;
@@ -173,7 +173,7 @@ button:hover {
   font-weight: 600;
   font-size: 0.8rem;
   border: 1px solid white;
-  padding: 0.5rem;
+  padding: 0.25rem;
   flex: 1 1 80px;
   max-width: 100px;
   height: 100px;
@@ -187,10 +187,6 @@ button:hover {
   border-radius: 5px;
 }
 
-.course:hover {
-  background-color: rgb(227, 162, 88);
-  padding: 1rem;
-}
 
 .course.complete {
   background-color: rgb(234, 166, 104);
@@ -204,21 +200,21 @@ button:hover {
 
 #images {
   display: flex;
-  flex-direction: column;  /* bilder på höjd */
+  flex-direction: column; 
   align-items: center;
   gap: 1rem;
 }
 
 img {
-  width: 90%;          /* bredare bilder på mobilen, nästan full bredd */
-  max-width: none;     /* ta bort max-width för att undvika konstiga begränsningar */
+  width: 100%;         
+  max-width: none;     
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin: 1rem 0;
   display: block;
   object-fit: contain;
-  transition: none;    /* inga hover-effekter på mobil */
+  transition: none;   
   cursor: default;
 }
 
@@ -275,7 +271,7 @@ img {
   }
 
     #images {
-    flex-direction: row;   /* bilder på rad */
+    flex-direction: row;   
     justify-content: center;
   }
 
