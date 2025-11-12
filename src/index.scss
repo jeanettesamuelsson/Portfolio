@@ -31,6 +31,30 @@ a {
   padding: 1rem;
 }
 
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.dots div {
+  width: 6px;
+  height: 6px;
+  background: #c1ccea;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.dots div:nth-child(2) { animation-delay: 0.2s; }
+.dots div:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  from { transform: translateY(10px); opacity: 1; }
+  to   { transform: translateY(-5px); opacity: 0.6; }
+}
+
 #info-text {
   background: #1e1e1e; 
   font-family: 'Fira Code', 'Courier New', monospace;
@@ -61,6 +85,11 @@ a {
   justify-content: center;
   margin: auto;
   gap: 1rem;
+}
+
+#header-container {
+  display:flex;
+  gap: 0.5rem;
 }
 
 #nav-links {
@@ -160,7 +189,7 @@ button:hover {
 
 .course:hover {
   background-color: rgb(227, 162, 88);
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .course.complete {
@@ -171,6 +200,31 @@ button:hover {
 .course a {
   color: var(--primary-text-color);
   font-weight: 700;
+}
+
+#images {
+  display: flex;
+  flex-direction: column;  /* bilder på höjd */
+  align-items: center;
+  gap: 1rem;
+}
+
+img {
+  width: 90%;          /* bredare bilder på mobilen, nästan full bredd */
+  max-width: none;     /* ta bort max-width för att undvika konstiga begränsningar */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+  display: block;
+  object-fit: contain;
+  transition: none;    /* inga hover-effekter på mobil */
+  cursor: default;
+}
+
+.info-course {
+  width: 70%;
+  margin:auto;
 }
 
 /*MEDIA QUERIES DESKTOP*/
@@ -196,9 +250,6 @@ button:hover {
     gap: 1rem;
   }
 
-  #nav-links a:hover {
-    font-size: 1.5rem;
-  }
 
   #links svg {
     height: 4%;
@@ -217,9 +268,26 @@ button:hover {
   }
 
   .course {
-    flex: 0 0 100px;
-    width: 100px;
-    height: 100px;
-    font-size: 0.8rem;
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    font-size: 0.65rem;
+  }
+
+    #images {
+    flex-direction: row;   /* bilder på rad */
+    justify-content: center;
+  }
+
+  img {
+    max-width: 30%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  img:hover {
+    transform: scale(2);
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   }
 }

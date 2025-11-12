@@ -6,6 +6,8 @@ import HomePage from './components/HomePage.jsx';
 import Contact from './components/Contact.jsx';
 import Header from './components/Header.jsx';
 import Edu from './components/Edu.jsx';
+import HTMLCSS from './components/HTMLCSS.jsx';
+import JS from './components/JS.jsx';
 
 function App() {
 
@@ -20,25 +22,25 @@ function App() {
           <header>
             <section id="header">
 
-            <Header />
+              <Header />
 
-             <nav id="nav-links">
+              <nav id="nav-links">
 
-            <ul>
+                <ul>
 
-              <li><NavLink to="/">Start</NavLink></li>
-              <li> <NavLink to="/edu">Min utbildning</NavLink></li>
-              {/* <li> <NavLink to="/projects">Projekt</NavLink></li> */}
+                  <li><NavLink to="/">Start</NavLink></li>
+                  <li> <NavLink to="/edu">Utbildning/Projekt</NavLink></li>
+                  {/* <li> <NavLink to="/projects">Projekt</NavLink></li> */}
 
-            </ul>
-          </nav>
+                </ul>
+              </nav>
 
-          </section>
+            </section>
 
           </header>
           <hr className="divider"></hr>
 
-    
+
 
           <main>
 
@@ -46,6 +48,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/edu" element={<Edu />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/HTMLCSS" element={<HTMLCSS />} />
+              <Route path="/JS" element={<JS />} />
 
             </Routes>
 

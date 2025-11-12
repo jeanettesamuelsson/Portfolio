@@ -1,16 +1,24 @@
 import React from 'react'
 
 function Header() {
+
+   const text = "developer loading";
+
+   
   return (
     <div>
 
-        <div id="container">
+      <div id="header-container">
 
-                <h1>
-                    developer loading...
-                </h1>
+        <h1>
+          developer loading
+        </h1>
 
-            </div>
+        <div class="dots">
+          <div></div><div></div><div></div>
+        </div>
+
+      </div>
     </div>
   )
 }
