@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
@@ -13,7 +14,11 @@ function HomePage() {
 
       &nbsp;&nbsp;<p className="content">Stay tuned för mer kod och projekt under resans gång!</p>
 
+      &nbsp;&nbsp;<p className="content"><Link to="/about">Vill du veta mer om mig?</Link> </p>
+      
+
       <span className="tag">&lt;/div&gt;</span>
+      
 
     </div>
   )

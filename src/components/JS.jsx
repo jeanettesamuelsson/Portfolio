@@ -17,8 +17,8 @@ function JS() {
 
       <div id="images">
 
-        <img src={projekt4} alt="" />
-        <img src={projekt5} alt="" />
+        <img className="gallery-img" src={projekt4} alt="" />
+        <img className="gallery-img" src={projekt5} alt="" />
 
       </div>
 

@@ -8,6 +8,7 @@ import Header from './components/Header.jsx';
 import Edu from './components/Edu.jsx';
 import HTMLCSS from './components/HTMLCSS.jsx';
 import JS from './components/JS.jsx';
+import About from './components/About.jsx';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 
                   <li><NavLink to="/">Start</NavLink></li>
                   <li> <NavLink to="/edu">Utbildning/Projekt</NavLink></li>
+                  <li> <NavLink to="/about">Om mig</NavLink></li>
                   {/* <li> <NavLink to="/projects">Projekt</NavLink></li> */}
 
                 </ul>
@@ -50,6 +52,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/HTMLCSS" element={<HTMLCSS />} />
               <Route path="/JS" element={<JS />} />
+              <Route path="/about" element={<About />} />
 
             </Routes>
 

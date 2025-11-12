@@ -18,9 +18,9 @@ function HTMLCSS() {
 
        
 
-        <img src={projekt2} alt="" />
-        <img src={projekt3} alt="" />
-        <img src={projekt1} alt="" />
+        <img className="gallery-img" src={projekt2} alt="" />
+        <img className="gallery-img" src={projekt3} alt="" />
+        <img className="gallery-img" src={projekt1} alt="" />
 
       </div>
 
