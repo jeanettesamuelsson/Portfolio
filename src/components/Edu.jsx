@@ -8,7 +8,7 @@ function Edu() {
 
         <>
             <section id="learning">
-                <h2>Vad lär jag mig? </h2>
+                <h2>Vad jag lär mig </h2>
 
                 <div id="courses">
 

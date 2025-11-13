@@ -2,11 +2,11 @@ import React from 'react'
 
 function Contact() {
     return (
-        <div>
+        <section id="footer">
 
             <div id="contact">
 
-                <h2>Kontakt? </h2>
+                <h3>Kontakta mig </h3>
 
                 <div id="links">
                     <a href="https://www.linkedin.com/in/jeanette-samuelsson-614a08368/" target="_blank">
@@ -27,7 +27,7 @@ function Contact() {
                 </div>
 
             </div>
-        </div>
+        </section>
     )
 }
 
