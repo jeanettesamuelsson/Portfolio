@@ -5,7 +5,6 @@ function HomePage() {
   return (
     <div id="info-text">
 
-     
 
       <h4>TL;DR</h4>
       <p>Hej!</p>
@@ -14,10 +13,8 @@ function HomePage() {
 
      <p>Stay tuned för mer kod och projekt under resans gång!</p>
 
-      <p> <Link to="/about">Vill du veta mer om mig?</Link></p>
+      <Link to="/about"><h4>Läs mer</h4></Link>
       
-
-     
       
 
     </div>
