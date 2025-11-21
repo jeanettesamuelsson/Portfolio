@@ -17,7 +17,7 @@ function About() {
                 <p>   Hoppas vi hörs!   </p>
                 </div>
 
-                <img id="about-img" src={about} alt="" />
+                <img className="about-img" src={about} alt="" />
 
 
             </div>

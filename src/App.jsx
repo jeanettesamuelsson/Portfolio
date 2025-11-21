@@ -63,19 +63,20 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/edu" element={<Edu />} />
-                <Route path="/contact" element={<Contact />} />
                 <Route path="/HTMLCSS" element={<HTMLCSS />} />
                 <Route path="/JS" element={<JS />} />
                 <Route path="/about" element={<About />} />
               </Routes>
 
-              <Contact />
+              
 
             </section>
 
           </main>
 
         </BrowserRouter>
+
+        <Contact />
       </div>
 
     </>

@@ -105,8 +105,6 @@ a {
   max-width: 100%;
   height: auto;
   margin: auto;
-  display: grid;
-
 }
 
 .dots {
@@ -145,20 +143,15 @@ a {
 }
 
 #info-text {
-  background: var(--secondary-bg-color);
-  text-align: left;
-  padding:0.5rem;
-  text-align: left;
+  padding: 1rem;
   width: 100%;
-  margin: auto;
-  border-radius: 8px;
+  margin: 0.5rem;
   line-height: 1.6;
   max-width: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 
   a {
     font-weight: 900;
-    padding: 5rem;
+    padding: 1rem;
     color: var(--secondary-text-color);
   }
 }
@@ -324,7 +317,7 @@ button:hover {
 }
 
 
-#about-img {
+.about-img {
   width: 50%;
   aspect-ratio: 1/1;
   height: auto;
@@ -338,7 +331,7 @@ button:hover {
   background-color: var(--secondary-bg-color);
   margin-top: 3rem;
   padding-top: 3rem;
-  width: 100%;
+  width: 100vw;
 }
 
 
@@ -380,14 +373,32 @@ button:hover {
 
 
   #info-text {
-    padding: 2rem;
-    max-width: 50%;
+    padding: 0.5rem;
+    text-align: left;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    h2{
+      margin: 0;
+      padding: 0;
+      font-size: 2.5rem;
+
+    }
 
     p a{
       margin: 0;
       padding: 0;
     }
 
+  }
+
+  #info-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
   }
 
 
