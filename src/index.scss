@@ -91,7 +91,6 @@ body {
   color: var(--standard-text-color);
   background-color: var(--standard-bg-color);
   margin: 0 auto;
-  padding: 0;
   text-align: center;
   box-sizing: border-box;
 }
@@ -144,10 +143,10 @@ a {
 
 #info-text {
   padding: 1rem;
-  width: 100%;
-  margin: 0.5rem;
+  max-width: 90%;
+  margin: 0.3rem auto;
   line-height: 1.6;
-  max-width: 100%;
+
 
   a {
     font-weight: 900;
