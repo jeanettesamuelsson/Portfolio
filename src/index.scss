@@ -9,6 +9,7 @@
   --standard-bg-color: #dbdbdb;
   --secondary-bg-color:#cba79447;
   --standard-text-color: rgba(50, 50, 50, 0.87);
+  color-scheme: normal;
 }
 
 .darkmode {
@@ -19,6 +20,7 @@
   --standard-bg-color: #252424;
   --secondary-bg-color:#1e1e1e;
   --standard-text-color: rgba(255, 255, 255, 0.87);
+  color-scheme: dark;
 
 }
 
@@ -27,10 +29,11 @@
 #darkmode-wrapper {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 
   span {
-    font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -177,6 +180,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -306,7 +310,7 @@ button:hover {
 }
 
 #about {
-  width: 100%;
+  width: 90%;
   margin: 0;
   line-height: 1.5;
   display: flex;

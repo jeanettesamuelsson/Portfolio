@@ -47,7 +47,7 @@ function App() {
                 </ul>
 
                 <div id="darkmode-wrapper">
-                  <span>Darkmode</span>
+                  <span>{darkMode ? "☀️" : "🌙"}</span>
                   <label id="toggle">
                     <input type="checkbox" checked={darkMode} onChange={handleToggle} id="darkmode-toggle" />
                     <span id="slider"></span>
