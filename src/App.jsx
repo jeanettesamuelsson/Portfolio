@@ -1,86 +1,181 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import './index.scss'
-import HomePage from './components/HomePage.jsx';
-import Contact from './components/Contact.jsx';
+import './index.scss';
+
+// Importera dina komponenter
 import Header from './components/Header.jsx';
+import HomePage from './components/HomePage.jsx';
 import Edu from './components/Edu.jsx';
+import About from './components/About.jsx';
 import HTMLCSS from './components/HTMLCSS.jsx';
 import JS from './components/JS.jsx';
-import About from './components/About.jsx';
+import Contact from './components/Contact.jsx';
+import ScrollPixels from './components/ScrollPixels.jsx';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
 
-  const [darkMode, setDarkMode] = useState(false)
+  // Scroll logic
+  useEffect(() => {
+    const handleScroll = () => {
+      // pixel progress
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      setScrollProgress(scrolled);
 
-  const handleToggle = () => {
-    setDarkMode((prev) => !prev);
-  };
+      // active section
+      const sections = ['home', 'learning', 'about', 'projects', 'contact-footer'];
+      const scrollPos = window.scrollY + 300; // Trigger-offset
 
+      sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(id);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Darkmode
+  const handleToggle = () => setDarkMode((prev) => !prev);
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("darkmode");
-    } else {
-      document.body.classList.remove("darkmode");
-    }
+    document.body.classList.toggle("darkmode", darkMode);
   }, [darkMode]);
 
+  // smooth scroll
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // function to close menu 
+  const handleNavClick = (id) => {
+    scrollToSection(id);
+    setIsMenuOpen(false);
+  };
+
   return (
+    <div id="main-container">
 
-    <>
+      {/* hamburger nav on mobile*/}
+      <button 
+        className={`hamburger ${isMenuOpen ? 'open' : ''}`} 
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Meny"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <div id="main-container">
-        <BrowserRouter>
+      {/* overlay */}
+      <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+        <ul>
+          <li><button onClick={() => handleNavClick('home')}>Start</button></li>
+          <li><button onClick={() => handleNavClick('learning')}>Utbildning</button></li>
+          <li><button onClick={() => handleNavClick('about')}>Om mig</button></li>
+          <li><button onClick={() => handleNavClick('projects')}>Projekt</button></li>
+          <li><button onClick={() => handleNavClick('contact-footer')}>Kontakt</button></li>
+        </ul>
+      </nav>
+      
+      {/* Sidebar */}
+      <div className="pixel-sidebar">
+        <ScrollPixels scrollProgress={scrollProgress} />
+        
+        <div className="scroll-track-left">
+        
+          <div 
+            className="scroll-thumb-left" 
+            style={{ height: `${scrollProgress}%` }}
+          ></div>
 
-          <header>
-            <section id="header">
-              <Header />
-              <nav id="nav-links">
-                <ul>
-                  <li><NavLink to="/">Start</NavLink></li>
-                  <li> <NavLink to="/edu">Utbildning/Projekt</NavLink></li>
-                  <li> <NavLink to="/about">Om mig</NavLink></li>
-                  {/* <li> <NavLink to="/projects">Projekt</NavLink></li> */}
-                </ul>
-
-                <div id="darkmode-wrapper">
-                  <span>{darkMode ? "☀️" : "🌙"}</span>
-                  <label id="toggle">
-                    <input type="checkbox" checked={darkMode} onChange={handleToggle} id="darkmode-toggle" />
-                    <span id="slider"></span>
-                  </label>
-                </div>
-              </nav>
-            </section>
-
-          </header>
-          <hr className="divider"></hr>
-          <main>
-            <section id="main">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/edu" element={<Edu />} />
-                <Route path="/HTMLCSS" element={<HTMLCSS />} />
-                <Route path="/JS" element={<JS />} />
-                <Route path="/about" element={<About />} />
-              </Routes>
-
-              
-
-            </section>
-
-          </main>
-
-        </BrowserRouter>
-
-        <Contact />
+          <div className="scroll-dots-container">
+            {[
+              { id: 'home', label: 'Start' },
+              { id: 'learning', label: 'Utbildning' },
+              { id: 'about', label: 'Om mig' },
+              { id: 'projects', label: 'Projekt' },
+              { id: 'contact-footer', label: 'Kontakt' }
+            ].map((item) => (
+             <div 
+                 key={item.id}
+                  className={`scroll-dot-wrapper ${activeSection === item.id ? 'active' : ''}`} 
+                  onClick={() => scrollToSection(item.id)}
+>
+                 <div className="scroll-dot"></div>
+                <span className="dot-label">{item.label}</span>
+            </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-    </>
-  )
+      {/* Sticky nav */}
+      <header className="sticky-nav">
+        <section id="header-nav-wrapper">
+          <Header />
+          
+
+            <div id="darkmode-wrapper">
+              <span>{darkMode ? "☀️" : "🌙"}</span>
+              <label id="toggle">
+                <input type="checkbox" checked={darkMode} onChange={handleToggle} id="darkmode-toggle" />
+                <span id="slider"></span>
+              </label>
+            </div>
+          
+        </section>
+      </header>
+
+      {/* Main */}
+      <main>
+        <section id="home" className="page-section">
+          <HomePage />
+        </section>
+
+        <section id="learning" className="page-section alt-bg">
+          <Edu />
+        </section>
+
+        <section id="about" className="page-section">
+          <About />
+        </section>
+
+        <section id="projects" className="page-section alt-bg">
+          <h2 className="section-title">Mina Projekt</h2>
+          
+          <div id="html-css-project">
+            <HTMLCSS />
+          </div>
+          
+          <div className="divider" style={{margin: '4rem 0'}}></div>
+          
+          <div id="js-project">
+            <JS />
+          </div>
+        </section>
+      </main>
+
+      <footer id="contact-footer">
+        <Contact />
+      </footer>
+
+    </div>
+  );
 }
 
-export default App
+export default App;

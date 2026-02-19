@@ -5,9 +5,9 @@ import projekt3 from '../assets/projekt3.png'
 
 function HTMLCSS() {
   return (
-    <section>
+    <section id="html-css-project">
 
-      <div className ="info-course">I kursen HTML och CSS fick vi lära oss att bygga en webbsida utifrån en färdig design med hjälp av HTML och CSS. Under kursens gång testade vi även olika CSS-ramverk, såsom Tailwind och Bootstrap. Vi gick också igenom grundläggande JavaScript för att skapa interaktiva delar på webbsidan, som en FAQ-accordion och en funktion för mörkt tema.
+      <div className ="info-course">I kursen HTML och CSS fick jag lära mig att bygga en webbsida utifrån en färdig design i Figma. Under kursens gång testade jag även på olika CSS-ramverk, såsom Tailwind och Bootstrap. Vi gick också igenom grundläggande JavaScript för att skapa interaktiva delar på webbsidan, så som en FAQ-accordion och en funktion för mörkt tema.
        
        <h3>Projekt HTML&CSS - Silicon </h3>
        <h4><a href="https://github.com/jeanettesamuelsson/SiliconV2" target="_blank" >GitHub-länk</a></h4>

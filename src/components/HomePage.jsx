@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import about from '../assets/about2.png'
 
+
 function HomePage() {
   return (
     <div id="info-text">
@@ -18,12 +19,7 @@ function HomePage() {
 
      <p>Stay tuned för mer kod och projekt under resans gång!</p>
 
-     
-
-      <Link to="/about"><h4>Läs mer</h4></Link>
-      
-      
-
+    
     </div>
   )
 }

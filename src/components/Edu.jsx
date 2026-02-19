@@ -1,41 +1,51 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-
 
 function Edu() {
 
-    return (
+  // Funktion för att scrolla smidigt
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-        <>
-            <section id="learning">
-                <h2>Vad jag lär mig </h2>
+  return (
+    <>
+      <section id="learning-content">
+        <h2 className="section-title">Kurser</h2>
 
-                <div id="courses">
+        <div id="courses">
+          {/* Vi triggar scroll till projekt-sektionen vid klick */}
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('html-css-project')}
+          > 
+            HTML & CSS 
+          </div>
 
-                    <Link to="/HTMLCSS"><div className="course complete"> HTML & CSS </div></Link>
-                    <Link to="/JS"><div className="course complete"> Javascript Frontend </div></Link>
-                    <div className="course">C#</div>
-                    <div className="course">Datalagring</div>
-                    <div className="course">ASP.NET</div>
-                    <div className="course">Molntjänster och distribuerade system</div>
-                    <div className="course">CMS</div>
-                    <div className="course">Projekt</div>
-                    <div className="course">LIA</div>
-                    <div className="course">Examensarbete</div>
-                </div>
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Javascript Frontend 
+          </div>
 
-                <a href="https://ecutbildning.se/utbildningar/webbutvecklare-inom-net/#om-utbildningen" target="_blank"><h2>Läs mer om programmet Webbutvecklare inom .NET</h2></a>
+          <div className="course">C#</div>
+          <div className="course">Datalagring</div>
+          <div className="course">ASP.NET</div>
+          <div className="course">Molntjänster</div>
+          <div className="course">CMS</div>
+          <div className="course">Projekt</div>
+          <div className="course">LIA</div>
+          <div className="course">Examensarbete</div>
+        </div>
 
-            </section>
+      </section>
 
-           
-
-            <hr className="divider"></hr>
-
-        </>
-
-    )
+      <hr className="divider" />
+    </>
+  )
 }
-
 
 export default Edu
