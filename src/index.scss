@@ -394,20 +394,23 @@ input:checked + #slider:before { transform: translateX(12px); }
 
 .images {
   display: flex;
-  align-items: stretch; 
+  flex-direction: column; 
+  align-items: center;
   justify-content: center;
   gap: 20px;
   width: 100%;
+  padding: 0 15px; 
+  box-sizing: border-box;
 }
 
 .gallery-img {
-  
-  flex: 1;           
-  width: 100%;
-
-  object-fit: contain;    
+ 
+  width: 100%;       
+  max-width: 500px; 
   height: auto; 
+  object-fit: contain; 
   border-radius: 8px;
+  flex: none; 
 }
 
  .about-img {
@@ -613,17 +616,24 @@ input:checked + #slider:before { transform: translateX(12px); }
 
   #darkmode-wrapper { margin-top: 0; }
 
-  #images {
+ .images {
+
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: wrap; 
+    padding: 0;
+    align-items: stretch; 
   }
 
   .gallery-img {
+  
+    flex: 1; 
     max-width: 30%;
-    &:hover {
-      transform: scale(1.05);
-    }
+    min-width: 250px; 
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.05);
   }
 
  
