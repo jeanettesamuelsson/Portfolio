@@ -13,7 +13,7 @@ function Edu() {
   return (
     <>
       <section id="learning-content">
-        <h2 className="section-title">Kurser</h2>
+        <h2 className="section-title">Klara kurser</h2>
 
         <div id="courses">
           {/* Vi triggar scroll till projekt-sektionen vid klick */}
@@ -31,14 +31,23 @@ function Edu() {
             Javascript Frontend 
           </div>
 
-          <div className="course">C#</div>
-          <div className="course">Datalagring</div>
-          <div className="course">ASP.NET</div>
-          <div className="course">Molntjänster</div>
-          <div className="course">CMS</div>
-          <div className="course">Projekt</div>
-          <div className="course">LIA</div>
-          <div className="course">Examensarbete</div>
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            C#
+          </div>
+
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Datalagring 
+          </div>
+
+
+          <div className="ongoing-course">Pågående! ASP.NET</div>
+       
         </div>
 
       </section>

@@ -9,7 +9,9 @@ import About from './components/About.jsx';
 import HTMLCSS from './components/HTMLCSS.jsx';
 import JS from './components/JS.jsx';
 import Contact from './components/Contact.jsx';
-import ScrollPixels from './components/ScrollPixels.jsx';
+import IntegratedPixels from './components/IntegratedPixels.jsx';
+import Datalagring from './components/Datalagring.jsx';
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -70,6 +72,8 @@ function App() {
   return (
     <div id="main-container">
 
+      <IntegratedPixels scrollProgress={scrollProgress} activeSection={activeSection} />
+
       {/* hamburger nav on mobile*/}
       <button 
         className={`hamburger ${isMenuOpen ? 'open' : ''}`} 
@@ -94,8 +98,7 @@ function App() {
       
       {/* Sidebar */}
       <div className="pixel-sidebar">
-        <ScrollPixels scrollProgress={scrollProgress} />
-        
+       
         <div className="scroll-track-left">
         
           <div 
@@ -143,6 +146,7 @@ function App() {
 
       {/* Main */}
       <main>
+        
         <section id="home" className="page-section">
           <HomePage />
         </section>
@@ -167,6 +171,15 @@ function App() {
           <div id="js-project">
             <JS />
           </div>
+
+           <div className="divider" style={{margin: '4rem 0'}}></div>
+          
+          <div id="datalagring-project">
+            <Datalagring />
+          </div>
+
+
+
         </section>
       </main>
 

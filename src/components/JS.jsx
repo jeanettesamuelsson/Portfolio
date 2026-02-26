@@ -15,7 +15,7 @@ function JS() {
 
       </div>
 
-      <div id="images">
+      <div className="images">
 
         <img className="gallery-img" src={projekt4} alt="" />
         <img className="gallery-img" src={projekt5} alt="" />

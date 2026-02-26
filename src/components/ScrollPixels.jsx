@@ -20,7 +20,7 @@ const ScrollPixels = ({ scrollProgress }) => {
       }
 
       reset() {
-        this.x = Math.random() * 100 + 50; 
+        this.x = Math.random() * 10 + 5; 
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 3 + 1;
         this.speedY = Math.random() * 0.5 + 0.5;

@@ -14,7 +14,7 @@ function HTMLCSS() {
 
        </div>
 
-      <div id="images">
+      <div className="images">
 
        
 
