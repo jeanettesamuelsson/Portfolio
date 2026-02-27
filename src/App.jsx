@@ -13,9 +13,9 @@ import projekt2 from './assets/projekt2.png'
 import projekt3 from './assets/projekt3.png'
 import projekt4 from './assets/projekt4.png'
 import projekt5 from './assets/projekt5.png'
-import projekt6 from './assets/projekt6.png'
-import projekt7 from './assets/projekt7.png'
-import projekt8 from './assets/projekt8.png'
+import Projekt6 from './assets/Projekt6.png'
+import Projekt7 from './assets/Projekt7.png'
+import Projekt8 from './assets/Projekt8.png'
 
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
       title: "CManager",
       course: "C#",
       description: "I kursen C# låg mycket fokus på systemarkitektur och jag lärde mig bland annat att skapa en konsolapplikation i form av ett kundhanteringssystem. Systemet kunde lägga till användare i en lista och spara dem som en JSON-fil, samt söka och ta bort specifika användare. Vidare lärde jag mig om MVVM-mönstret och tillämpade detta i en grafisk WPF-applikation.",
-      images: [projekt8],
+      images: [Projekt8],
       githubUrl: "https://github.com/jeanettesamuelsson/CManager"
     },
 
@@ -60,7 +60,7 @@ function App() {
       title: "EduSQRL & GolfSQRL",
       course: "Datalagring",
       description: "I kursen Datalagring var fokuset att bygga en applikation för kursadministration. Jag lärde mig att designa en relationsdatabas i Microsoft SQL Server, grundläggande SQL-syntax samt att koppla ihop detta med ett Minimal Web-API byggt i .NET med Entity Framework Core. Under kursens gång startade jag även upp ett sidoprojekt - GolfSQRL, som tekniskt sätt går hand i hand med EduSQRL. Här fokuserade jag på att bygga en lösning för ett verkligt behov, vilket lät mig experimentera mer fritt utanför kursens ramar.",
-      images: [projekt7, projekt6],
+      images: [Projekt7, Projekt6],
       githubUrl: "https://github.com/jeanettesamuelsson/Datalagring-Jeanette-Samuelsson"
     },
 
