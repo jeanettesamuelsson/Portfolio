@@ -16,6 +16,7 @@ import projekt5 from './assets/projekt5.png'
 import projekt6 from './assets/projekt6.png'
 import projekt7 from './assets/projekt7.png'
 import projekt8 from './assets/projekt8.png'
+import projekt9 from './assets/projekt9.png'
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
       title: "CManager",
       course: "C#",
       description: "I kursen C# låg mycket fokus på systemarkitektur och jag lärde mig bland annat att skapa en konsolapplikation i form av ett kundhanteringssystem. Systemet kunde lägga till användare i en lista och spara dem som en JSON-fil, samt söka och ta bort specifika användare. Vidare lärde jag mig om MVVM-mönstret och tillämpade detta i en grafisk WPF-applikation.",
-      images: [projekt8],
+      images: [projekt8, projekt9],
       githubUrl: "https://github.com/jeanettesamuelsson/CManager"
     },
 
