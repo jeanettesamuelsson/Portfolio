@@ -1,5 +1,6 @@
 import React from 'react'
 import projekt6 from '../assets/projekt6.png'
+import projekt7 from '../assets/projekt7.png'
 
 
 function Datalagring() {
@@ -18,6 +19,7 @@ function Datalagring() {
 
       <div className="images">
 
+        <img className="gallery-img" src={projekt7} alt="" />
         <img className="gallery-img" src={projekt6} alt="" />
         
 

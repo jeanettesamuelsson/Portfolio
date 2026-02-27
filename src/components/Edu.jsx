@@ -13,10 +13,38 @@ function Edu() {
   return (
     <>
       <section id="learning-content">
-        <h2 className="section-title">Klara kurser</h2>
+        <h2 className="section-title">Avklarade kurser</h2>
 
         <div id="courses">
-          {/* Vi triggar scroll till projekt-sektionen vid klick */}
+
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Introduktion till Linux och små nätverk
+          </div>
+
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Cybersäkerhet - grunder och medvetenhet
+          </div>
+
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Programmering i Java
+          </div>
+
+          <div 
+            className="course complete" 
+            onClick={() => scrollToSection('js-project')}
+          > 
+            Dataanalys med R
+          </div>
+        
           <div 
             className="course complete" 
             onClick={() => scrollToSection('html-css-project')}
@@ -33,14 +61,14 @@ function Edu() {
 
           <div 
             className="course complete" 
-            onClick={() => scrollToSection('js-project')}
+            onClick={() => scrollToSection('cs-project')}
           > 
             C#
           </div>
 
           <div 
             className="course complete" 
-            onClick={() => scrollToSection('js-project')}
+            onClick={() => scrollToSection('datalagring-project')}
           > 
             Datalagring 
           </div>
