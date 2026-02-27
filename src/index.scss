@@ -345,68 +345,97 @@ input:checked + #slider:before { transform: translateX(12px); }
 .gallery-wrapper {
   position: relative;
   width: 100%;
+  margin: 20px 0;
 }
 
+/* Huvudscrollen för de olika projekten */
 .images {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
-  gap: 15px;
+  scrollbar-width: none;
+  gap: 20px;
   padding: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .images::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
-/* projetc-card */
+/* Själva projektkortet */
 .project-slide {
-  flex: 0 0 95%; 
+  flex: 0 0 92%; /* Ger en liten glimt av nästa kort */
   scroll-snap-align: center;
   display: flex;
-  flex-direction: column; 
-  background: var(--standard-bg-color);
-  border-radius: 15px;
-  padding: 10px;
-  gap: 10px;
+  flex-direction: column;
+  background: var(--secondary-bg-color); /* Använder din mörkare ton som bas */
+  border-radius: 20px;
+  padding: 20px;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
 
 .gallery-img-container {
   width: 100%;
-  
-  height: 85vh; 
+ 
+  aspect-ratio: 1 / 1; 
+  max-height: 60vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--secondary-bg-color);
-  border-radius: 10px;
-  overflow: hidden; 
+  background-color: var(--standard-bg-color); 
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
   border: 1px solid rgba(0,0,0,0.05);
 }
 
 
 .gallery-img-container img {
-  width: 100%;
-  height: 100%;
-
+  max-width: 95%; 
+  max-height: 95%;
   object-fit: contain; 
- 
-  padding: 5px; 
+  
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+  border-radius: 4px; 
+  transition: transform 0.3s ease;
 }
+
+.project-images-grid {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 15px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.project-images-grid .gallery-img-container {
+  flex: 0 0 100%; 
+  scroll-snap-align: center;
+}
+
+
+.project-text-part {
+  text-align: left;
+}
+
+.project-text-part h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--primary-link-color);
+}
+
+
 
 .project-text-part h3 {
   margin-top: 0;
   font-size: 1 rem;
 }
 
-
-.project-images-grid {
-  display: flex;
-  flex-direction: column; 
-  gap: 10px;
-  width: 100%;
-}
 
  .about-img {
   width: 180px;         
