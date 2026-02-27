@@ -364,14 +364,13 @@ input:checked + #slider:before { transform: translateX(12px); }
 }
 
 .project-slide {
-  flex: 0 0 85%; 
+  flex: 0 0 80%; 
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   background: var(--secondary-bg-color); 
   border-radius: 20px;
-  padding: 20px;
-  gap: 15px;
+  padding-left: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
