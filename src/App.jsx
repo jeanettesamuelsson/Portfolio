@@ -13,8 +13,8 @@ import projekt2 from './assets/projekt2.png'
 import projekt3 from './assets/projekt3.png'
 import projekt4 from './assets/projekt4.png'
 import projekt5 from './assets/projekt5.png'
-import Projekt6 from './assets/Projekt6.png'
-import Projekt7 from './assets/Projekt7.png'
+import projekt6 from './assets/projekt6.png'
+import projekt7 from './assets/projekt7.png'
 import Projekt8 from './assets/Projekt8.png'
 
 
@@ -60,7 +60,7 @@ function App() {
       title: "EduSQRL & GolfSQRL",
       course: "Datalagring",
       description: "I kursen Datalagring var fokuset att bygga en applikation för kursadministration. Jag lärde mig att designa en relationsdatabas i Microsoft SQL Server, grundläggande SQL-syntax samt att koppla ihop detta med ett Minimal Web-API byggt i .NET med Entity Framework Core. Under kursens gång startade jag även upp ett sidoprojekt - GolfSQRL, som tekniskt sätt går hand i hand med EduSQRL. Här fokuserade jag på att bygga en lösning för ett verkligt behov, vilket lät mig experimentera mer fritt utanför kursens ramar.",
-      images: [Projekt7, Projekt6],
+      images: [projekt7, projekt6],
       githubUrl: "https://github.com/jeanettesamuelsson/Datalagring-Jeanette-Samuelsson"
     },
 
