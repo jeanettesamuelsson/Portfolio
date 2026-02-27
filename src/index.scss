@@ -283,7 +283,7 @@ input:checked + #slider:before { transform: translateX(12px); }
 
  #courses {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 20px;
   width: 100%;
  
@@ -317,7 +317,8 @@ input:checked + #slider:before { transform: translateX(12px); }
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 80px; 
+  min-height: 70px; 
+  font-size: 0.8rem;
   transition: all 0.3s ease;
 
   &:hover {
