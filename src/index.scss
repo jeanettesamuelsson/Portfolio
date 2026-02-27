@@ -348,7 +348,7 @@ input:checked + #slider:before { transform: translateX(12px); }
   margin: 20px 0;
 }
 
-/* Huvudscrollen för de olika projekten */
+
 .images {
   display: flex;
   overflow-x: auto;
@@ -363,13 +363,12 @@ input:checked + #slider:before { transform: translateX(12px); }
   display: none;
 }
 
-/* Själva projektkortet */
 .project-slide {
-  flex: 0 0 92%; /* Ger en liten glimt av nästa kort */
+  flex: 0 0 85%; 
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  background: var(--secondary-bg-color); /* Använder din mörkare ton som bas */
+  background: var(--secondary-bg-color); 
   border-radius: 20px;
   padding: 20px;
   gap: 15px;
@@ -378,7 +377,7 @@ input:checked + #slider:before { transform: translateX(12px); }
 
 
 .gallery-img-container {
-  width: 100%;
+  width: 90%;
  
   aspect-ratio: 1 / 1; 
   max-height: 90vh; 
