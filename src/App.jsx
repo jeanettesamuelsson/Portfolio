@@ -179,29 +179,37 @@ function App() {
         <section id="learning" className="page-section alt-bg"><Edu /></section>
         <section id="about" className="page-section"><About /></section>
 
-        {/* Project section  */}
+      {/* Project section */}
 
-        <section id="projects" className="page-section alt-bg">
-          <h2 className="section-title">Mina Projekt</h2>
-          
-          <div className="gallery-wrapper">
-          
-          <div className="gallery-controls">
-                <button className="nav-btn" onClick={() => scroll('left')} aria-label="Föregående">‹</button>
-                <button className="nav-btn" onClick={() => scroll('right')} aria-label="Nästa">›</button>
-                </div>
+<section id="projects" className="page-section alt-bg">
+  <h2 className="section-title">Mina Projekt</h2>
 
-           
-            
-            <div className="images" ref={scrollRef}>
-              {myProjects.map((project) => (
-                <ProjectSlide key={project.id} project={project} />
-              ))}
-            </div>
 
-           
-          </div>
-        </section>
+  <div className="swipe-indicator">Bläddra projekt <span>→</span></div>
+
+  <div className="gallery-wrapper">
+   
+    <div className="gallery-controls">
+      <button className="nav-btn" onClick={() => scroll('left')} aria-label="Föregående">‹</button>
+      <button className="nav-btn" onClick={() => scroll('right')} aria-label="Nästa">›</button>
+    </div>
+
+ 
+    <div className="images" ref={scrollRef}>
+      {myProjects.map((project) => (
+        <ProjectSlide key={project.id} project={project} />
+      ))}
+    </div>
+    
+   
+    <div className="pagination-dots">
+      {myProjects.map((_, index) => (
+        <span key={index} className="dot"></span>
+      ))}
+    </div>
+  </div>
+</section>
+       
       </main>
 
       <footer id="contact-footer"><Contact /></footer>
