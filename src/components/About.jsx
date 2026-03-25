@@ -1,5 +1,5 @@
 import React from 'react'
-import about from '../assets/about.png'
+import about from '../assets/about2.png'
 
 function About() {
     return (
@@ -15,8 +15,7 @@ function About() {
             
                 <p>  För övrigt är jag en väldigt analyserande person, grottar gärna ner mig i ämnen och är ständigt på jakt efter nya, intressanta saker att lära mig. Jag skulle säga att jag är en problemlösare och tar mig gärna an utmaningar.
                     På min fritid umgås jag mycket med min familj, tycker om styrketräning och att vara ute i naturen.  </p> 
-                <p>   Hoppas vi hörs!   </p>
-            
+               
             </div>
 
             <hr className="divider"></hr>

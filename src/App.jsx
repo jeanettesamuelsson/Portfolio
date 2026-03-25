@@ -1,6 +1,14 @@
 import { useEffect, useState, useRef } from 'react'; 
 import './index.scss';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import Header from './components/Header.jsx';
 import HomePage from './components/HomePage.jsx';
 import Edu from './components/Edu.jsx';
@@ -25,8 +33,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
 
-  // Ref project gallery
-  const scrollRef = useRef(null);
+ 
 
 // list of projects
   const myProjects = [
@@ -69,14 +76,7 @@ function App() {
 
   ];
 
-  // Gallery function
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    }
-  };
+
 
   // Scroll logic 
   useEffect(() => {
@@ -181,34 +181,27 @@ function App() {
 
       {/* Project section */}
 
-<section id="projects" className="page-section alt-bg">
-  <h2 className="section-title">Mina Projekt</h2>
+             <section id="projects" className="page-section alt-bg">
+            <h2 className="section-title">Mina Projekt</h2>
 
-
-  <div className="swipe-indicator">Bläddra projekt <span>→</span></div>
-
-  <div className="gallery-wrapper">
+            <div className="gallery-wrapper">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={50}
+              slidesPerView={1}
+              navigation={true}
+              pagination={{ clickable: true }}
+              className="main-project-swiper"
+            >
+              {myProjects.map((project) => (
+                <SwiperSlide key={project.id}>
+                  <ProjectSlide project={project} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </section>
    
-    <div className="gallery-controls">
-      <button className="nav-btn" onClick={() => scroll('left')} aria-label="Föregående">‹</button>
-      <button className="nav-btn" onClick={() => scroll('right')} aria-label="Nästa">›</button>
-    </div>
-
- 
-    <div className="images" ref={scrollRef}>
-      {myProjects.map((project) => (
-        <ProjectSlide key={project.id} project={project} />
-      ))}
-    </div>
-    
-   
-    <div className="pagination-dots">
-      {myProjects.map((_, index) => (
-        <span key={index} className="dot"></span>
-      ))}
-    </div>
-  </div>
-</section>
        
       </main>
 
