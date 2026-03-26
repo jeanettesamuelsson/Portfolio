@@ -28,7 +28,7 @@ import projekt9 from './assets/projekt9.png'
 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
@@ -176,10 +176,8 @@ function App() {
 
       <main>
         <section id="home" className="page-section"><HomePage /></section>
-        <section id="learning" className="page-section alt-bg"><Edu /></section>
-        <section id="about" className="page-section"><About /></section>
 
-      {/* Project section */}
+        {/* Project section */}
 
              <section id="projects" className="page-section alt-bg">
             <h2 className="section-title">Mina Projekt</h2>
@@ -202,6 +200,11 @@ function App() {
           </div>
         </section>
    
+   
+        <section id="learning" className="page-section alt-bg"><Edu /></section>
+        <section id="about" className="page-section"><About /></section>
+
+      
        
       </main>
 

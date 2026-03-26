@@ -1,27 +1,18 @@
 import React from 'react'
 
+
 function Header() {
-
-   const text = "developer loading";
-
-   
   return (
-    <div>
-
-      <div id="header-container">
-
-        
-        <h1>
-          developer loading
+    <div id="header-container">
+     
+      <div className="navbar-brand-wrapper">
+        <h1 className="header-name">
+         Jeanette Samuelsson
+            
         </h1>
-
-        <div class="dots">
-          <div></div><div></div><div></div>
-        </div>
-
       </div>
     </div>
-  )
+  );
 }
 
 export default Header
