@@ -4,6 +4,10 @@ import './index.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
+import { Routes, Route, useLocation } from 'react-router-dom';
+import PixelGame from './components/PixelGame/PixelGame.jsx';
+import { Link } from 'react-router-dom';
+
 // swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -25,6 +29,8 @@ import projekt6 from './assets/projekt6.png'
 import projekt7 from './assets/projekt7.png'
 import projekt8 from './assets/projekt8.png'
 import projekt9 from './assets/projekt9.png'
+import capture from './assets/capture.png'
+import capture2 from './assets/capturegame2.png'
 
 
 function App() {
@@ -33,12 +39,24 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
 
+  //pixl game
+  const location = useLocation();
+  const isGamePage = location.pathname === '/pixlr';
+
  
 
 // list of projects
   const myProjects = [
     {
       id: 1,
+      title: "Capture the pixels",
+     playUrl: "/pixlr", 
+     description: "Ett fullstack webbläsarspel byggt med React och Canvas API, där spellogiken animeras via requestAnimationFrame. Spelet har även ett dynamiskt svårighetssystem som eskalerar under spelets gång. Backenden består av ett Minimal API i .NET 10 med en Azure SQL-databas för den globala leaderboarden. Observera att spelet endast fungerar på desktop!",
+     images: [capture, capture2]
+    },
+
+    {
+      id: 2,
       title: "Silicon",
       course: "HTML & CSS",
       description: "I kursen HTML och CSS fick jag lära mig att bygga en webbsida utifrån en färdig design i Figma. Under kursens gång testade jag även på olika CSS-ramverk, såsom Tailwind och Bootstrap. Jag lärde mig också lite grundläggande JavaScript för att skapa interaktiva delar på webbsidan, så som en FAQ-accordion och en funktion för mörkt tema.",
@@ -46,7 +64,7 @@ function App() {
       githubUrl: "https://github.com/jeanettesamuelsson/SiliconV2"
     },
     {
-      id: 2,
+      id: 3,
       title: "Stor Aid",
       course: "JavaScript Frontend",
       description: "I kursen JavaScript Frontend fick jag en gedigen introduktion till både grundläggande JavaScript men också React, vilket var fokuset under kursens gång. Jag fick bygga en webbsida utifrån en färdig design i Figma. Under kursens gång lärde jag mig att hantera formulär och göra API-anrop, både med ren JavaScript och med hjälp av olika npm-paket. Vi gick även igenom tillgänglighetsanpassning och hur man kan implementera riktlinjer enligt WCAG för att skapa inkluderande och tillgängliga webbsidor.",
@@ -55,7 +73,7 @@ function App() {
     },
    
     {
-      id: 3,
+      id: 4,
       title: "CManager",
       course: "C#",
       description: "I kursen C# låg mycket fokus på systemarkitektur och jag lärde mig bland annat att skapa en konsolapplikation i form av ett kundhanteringssystem. Systemet kunde lägga till användare i en lista och spara dem som en JSON-fil, samt söka och ta bort specifika användare. Vidare lärde jag mig om MVVM-mönstret och tillämpade detta i en grafisk WPF-applikation.",
@@ -64,7 +82,7 @@ function App() {
     },
 
      {
-      id: 4,
+      id: 5,
       title: "EduSQRL & GolfSQRL",
       course: "Datalagring",
       description: "I kursen Datalagring var fokuset att bygga en applikation för kursadministration. Jag lärde mig att designa en relationsdatabas i Microsoft SQL Server, grundläggande SQL-syntax samt att koppla ihop detta med ett Minimal Web-API byggt i .NET med Entity Framework Core. Under kursens gång startade jag även upp ett sidoprojekt - GolfSQRL, som tekniskt sätt går hand i hand med EduSQRL. Här fokuserade jag på att bygga en lösning för ett verkligt behov, vilket lät mig experimentera mer fritt utanför kursens ramar.",
@@ -123,92 +141,114 @@ function App() {
 
   return (
     <div id="main-container">
-      <IntegratedPixels scrollProgress={scrollProgress} activeSection={activeSection} />
-
-      {/* Hamburger & Nav */}
-      <button className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
-        <ul>
-          <li><button onClick={() => handleNavClick('home')}>Start</button></li>
-          <li><button onClick={() => handleNavClick('learning')}>Utbildning</button></li>
-          <li><button onClick={() => handleNavClick('about')}>Om mig</button></li>
-          <li><button onClick={() => handleNavClick('projects')}>Projekt</button></li>
-          <li><button onClick={() => handleNavClick('contact-footer')}>Kontakt</button></li>
-        </ul>
-      </nav>
+     
+      {!isGamePage && (
+        <>
       
-      {/* Sidebar */}
-      <div className="pixel-sidebar">
-        <div className="scroll-track-left">
-          <div className="scroll-thumb-left" style={{ height: `${scrollProgress}%` }}></div>
-          <div className="scroll-dots-container">
-            {[
-              { id: 'home', label: 'Start' },
-              { id: 'learning', label: 'Utbildning' },
-              { id: 'about', label: 'Om mig' },
-              { id: 'projects', label: 'Projekt' },
-              { id: 'contact-footer', label: 'Kontakt' }
-            ].map((item) => (
-              <div key={item.id} className={`scroll-dot-wrapper ${activeSection === item.id ? 'active' : ''}`} onClick={() => scrollToSection(item.id)}>
-                <div className="scroll-dot"></div>
-                <span className="dot-label">{item.label}</span>
+          <IntegratedPixels scrollProgress={scrollProgress} activeSection={activeSection} />
+
+          <button 
+            className={`hamburger ${isMenuOpen ? 'open' : ''}`} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span></span><span></span><span></span>
+          </button>
+
+          <nav className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+            <ul>
+              <li><button onClick={() => handleNavClick('home')}>Start</button></li>
+              <li><button onClick={() => handleNavClick('learning')}>Utbildning</button></li>
+              <li><button onClick={() => handleNavClick('about')}>Om mig</button></li>
+              <li><button onClick={() => handleNavClick('projects')}>Projekt</button></li>
+              <li><button onClick={() => handleNavClick('contact-footer')}>Kontakt</button></li>
+           
+            </ul>
+          </nav>
+          
+          <div className="pixel-sidebar">
+            <div className="scroll-track-left">
+              <div className="scroll-thumb-left" style={{ height: `${scrollProgress}%` }}></div>
+              <div className="scroll-dots-container">
+                {[
+                  { id: 'home', label: 'Start' },
+                  { id: 'learning', label: 'Utbildning' },
+                  { id: 'about', label: 'Om mig' },
+                  { id: 'projects', label: 'Projekt' },
+                  { id: 'contact-footer', label: 'Kontakt' }
+                ].map((item) => (
+                  <div 
+                    key={item.id} 
+                    className={`scroll-dot-wrapper ${activeSection === item.id ? 'active' : ''}`} 
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    <div className="scroll-dot"></div>
+                    <span className="dot-label">{item.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </div>
 
-      <header className="sticky-nav">
-        <section id="header-nav-wrapper">
-          <Header />
-          <div id="darkmode-wrapper">
-            <span>{darkMode ? "☀️" : "🌙"}</span>
-            <label id="toggle">
-              <input type="checkbox" checked={darkMode} onChange={handleToggle} id="darkmode-toggle" />
-              <span id="slider"></span>
-            </label>
-          </div>
-        </section>
-      </header>
+          <header className="sticky-nav">
+            <section id="header-nav-wrapper">
+              <Header />
+              <div id="darkmode-wrapper">
+                <span>{darkMode ? "☀️" : "🌙"}</span>
+                <label id="toggle">
+                  <input type="checkbox" checked={darkMode} onChange={handleToggle} id="darkmode-toggle" />
+                  <span id="slider"></span>
+                </label>
+              </div>
+            </section>
+          </header>
+        </>
+      )}
 
-      <main>
-        <section id="home" className="page-section"><HomePage /></section>
+      <Routes>
+        
+        <Route path="/" element={
+          <>
+            <main>
+              <section id="home" className="page-section">
+                <HomePage />
+              </section>
 
-        {/* Project section */}
+              <section id="projects" className="page-section alt-bg">
+                <h2 className="section-title">Mina Projekt</h2>
+                <div className="gallery-wrapper">
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation={true}
+                    pagination={{ clickable: true }}
+                    className="main-project-swiper"
+                  >
+                    {myProjects.map((project) => (
+                      <SwiperSlide key={project.id}>
+                        <ProjectSlide project={project} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+              </section>
 
-             <section id="projects" className="page-section alt-bg">
-            <h2 className="section-title">Mina Projekt</h2>
+              <section id="learning" className="page-section alt-bg">
+                <Edu />
+              </section>
 
-            <div className="gallery-wrapper">
-            <Swiper
-              modules={[Navigation, Pagination]}
-              spaceBetween={50}
-              slidesPerView={1}
-              navigation={true}
-              pagination={{ clickable: true }}
-              className="main-project-swiper"
-            >
-              {myProjects.map((project) => (
-                <SwiperSlide key={project.id}>
-                  <ProjectSlide project={project} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </section>
-   
-   
-        <section id="learning" className="page-section alt-bg"><Edu /></section>
-        <section id="about" className="page-section"><About /></section>
+              <section id="about" className="page-section">
+                <About />
+              </section>
+            </main>
+            <footer id="contact-footer">
+              <Contact />
+            </footer>
+          </>
+        } />
 
-      
-       
-      </main>
-
-      <footer id="contact-footer"><Contact /></footer>
+        <Route path="/pixlr" element={<PixelGame />} />
+      </Routes>
     </div>
   );
 }
