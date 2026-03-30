@@ -7,12 +7,12 @@ import { scoreService } from '../../services/scoreService';
 const GAME_DURATION = 30; // time sec
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 700;
-const PIXEL_SIZE = 4; 
+const PIXEL_SIZE = 4;
 
 
 // level manager
 const DIFFICULTY_CURVE = [
-  { time: 0,  spawnRate: 15, radius: 45, speed: 0.8,   label: "Chill." },
+  { time: 0, spawnRate: 15, radius: 45, speed: 0.8, label: "Chill." },
   { time: 10, spawnRate: 35, radius: 35, speed: 1.5, label: "Det hettar till." },
   { time: 20, spawnRate: 60, radius: 25, speed: 2.5, label: "KAOS!" },
 ];
@@ -23,7 +23,7 @@ function PixelGame() {
   const pixelsRef = useRef([]);      // list with pixels
   const mousePosRef = useRef({ x: 0, y: 0 }); // pointer position relative to canvas
   const animationFrameIdRef = useRef(); // to stop loop
-  const internalScoreRef = useRef(0); 
+  const internalScoreRef = useRef(0);
   const currentDifficultyRef = useRef(DIFFICULTY_CURVE[0]); // dufficulty config
 
   const prevScoreRef = useRef(0);
@@ -31,12 +31,12 @@ function PixelGame() {
 
 
   const [gameState, setGameState] = useState('IDLE'); // IDLE, PLAYING, ENDED
-  const [score, setScore] = useState(0);             
+  const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [currentLevelLabel, setCurrentLevelLabel] = useState(DIFFICULTY_CURVE[0].label);
 
 
- // leaderboard state
+  // leaderboard state
   const [leaderboard, setLeaderboard] = useState([]);
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
 
@@ -53,7 +53,7 @@ function PixelGame() {
     }
   }, []);
 
- 
+
   useEffect(() => {
     loadLeaderboard();
   }, [loadLeaderboard]);
@@ -61,26 +61,26 @@ function PixelGame() {
 
   // create pixel
   const spawnPixel = useCallback(() => {
-  const config = currentDifficultyRef.current;
-  
-  //penalty pixel
-  const isPenaltyPixel = Math.random() < 0.05; // 15% 
+    const config = currentDifficultyRef.current;
 
-  // pixel colors
-  const goodColors = ['#646cff', '#ffffff']; 
-  const penaltyColor = '#ff0000';
+    //penalty pixel
+    const isPenaltyPixel = Math.random() < 0.05; // 15% 
 
-  pixelsRef.current.push({
-    x: Math.random() * CANVAS_WIDTH,
-    y: Math.random() * CANVAS_HEIGHT,
-    color: isPenaltyPixel ? penaltyColor : goodColors[Math.floor(Math.random() * goodColors.length)],
-    // speed
-    vx: (Math.random() - 0.5) * config.speed, 
-    vy: (Math.random() - 0.5) * config.speed,
-    
-    isPenalty: isPenaltyPixel,
-  });
-}, []);
+    // pixel colors
+    const goodColors = ['#646cff', '#ffffff'];
+    const penaltyColor = '#ff0000';
+
+    pixelsRef.current.push({
+      x: Math.random() * CANVAS_WIDTH,
+      y: Math.random() * CANVAS_HEIGHT,
+      color: isPenaltyPixel ? penaltyColor : goodColors[Math.floor(Math.random() * goodColors.length)],
+      // speed
+      vx: (Math.random() - 0.5) * config.speed,
+      vy: (Math.random() - 0.5) * config.speed,
+
+      isPenalty: isPenaltyPixel,
+    });
+  }, []);
 
   // game engine (requestAnimationFrame)
   const gameLoop = useCallback(() => {
@@ -117,7 +117,7 @@ function PixelGame() {
 
       // if pixel is inside the radius -> remove
       if (distanceSquared < radiusSquared) {
-       
+
         if (p.isPenalty) {
           //remove score for penalty pixel and flash red
           internalScoreRef.current -= 5;
@@ -127,10 +127,10 @@ function PixelGame() {
           internalScoreRef.current += 1;
         }
 
-        return false; 
+        return false;
       }
 
-    
+
       ctx.fillStyle = p.color;
       ctx.fillRect(p.x, p.y, PIXEL_SIZE, PIXEL_SIZE);
       return true; // keep in list
@@ -139,20 +139,20 @@ function PixelGame() {
     // special pointer (cleaner)
     ctx.beginPath();
     ctx.arc(mousePosRef.current.x, mousePosRef.current.y, config.radius, 0, Math.PI * 2);
-    
-  
-    let activeColor = '#db976d'; 
+
+
+    let activeColor = '#db976d';
 
     if (penaltyFlashRef.current > 0) {
-      activeColor = '#ff0000';      
-      penaltyFlashRef.current -= 1; 
+      activeColor = '#ff0000';
+      penaltyFlashRef.current -= 1;
     }
 
-    
-    ctx.strokeStyle = activeColor; 
+
+    ctx.strokeStyle = activeColor;
     ctx.lineWidth = 2;
-    
-      //glow
+
+    //glow
     ctx.shadowColor = activeColor;
     ctx.shadowBlur = 10;
     ctx.stroke();
@@ -169,13 +169,13 @@ function PixelGame() {
     //clear all pixels 
     pixelsRef.current = [];
     internalScoreRef.current = 0;
-    mousePosRef.current = { x: CANVAS_WIDTH/2, y: CANVAS_HEIGHT/2 }; // starts in the center
+    mousePosRef.current = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 2 }; // starts in the center
     currentDifficultyRef.current = DIFFICULTY_CURVE[0];
-    
+
     setScore(0);
     setTimeLeft(GAME_DURATION);
     setCurrentLevelLabel(DIFFICULTY_CURVE[0].label);
-    
+
     // start game loop
     setGameState('PLAYING');
   };
@@ -184,16 +184,16 @@ function PixelGame() {
 
     setGameState('ENDED');
     setScore(internalScoreRef.current);
-    
+
     cancelAnimationFrame(animationFrameIdRef.current);
 
-     // load leadeboard when game ended
-     loadLeaderboard();
+    // load leadeboard when game ended
+    loadLeaderboard();
   }, [loadLeaderboard]);
- 
 
- 
-   
+
+
+
 
   // effects (Lifecycle) 
 
@@ -213,7 +213,7 @@ function PixelGame() {
     let timerInterval;
     if (gameState === 'PLAYING' && timeLeft > 0) {
       timerInterval = setInterval(() => {
-        
+
         setTimeLeft(prev => {
           if (prev <= 1) {
             endGame(); // times up
@@ -223,12 +223,12 @@ function PixelGame() {
 
           // level up 
           const elapsed = GAME_DURATION - newTime;
-         
+
           const nextLevel = [...DIFFICULTY_CURVE]
             .reverse()
             .find(level => elapsed >= level.time);
-          
-          if(nextLevel && nextLevel.time !== currentDifficultyRef.current.time) {
+
+          if (nextLevel && nextLevel.time !== currentDifficultyRef.current.time) {
             currentDifficultyRef.current = nextLevel;
             setCurrentLevelLabel(nextLevel.label);
             console.log(`Level Up: ${nextLevel.label}`);
@@ -236,13 +236,13 @@ function PixelGame() {
 
           return newTime;
         });
-        
-        
+
+
         setScore(internalScoreRef.current);
 
       }, 1000);
     }
-    
+
     return () => clearInterval(timerInterval);
   }, [gameState, timeLeft, endGame]);
 
@@ -259,22 +259,22 @@ function PixelGame() {
   // UI
   return (
     <div className="pixel-game-wrapper">
-      
+
       <div className="game-header">
 
         <h1 className="game-title">CAPTURE THE PIXELS</h1>
         <div className="game-stats">
           <span>TID: {timeLeft}s</span>
           <span>POÄNG: {score}</span>
-          <span style={{color: '#646cff'}}>NIVÅ: {currentLevelLabel}</span>
+          <span style={{ color: '#646cff' }}>NIVÅ: {currentLevelLabel}</span>
         </div>
       </div>
 
       <div className="canvas-container">
 
-        <canvas 
-          ref={canvasRef} 
-          width={CANVAS_WIDTH} 
+        <canvas
+          ref={canvasRef}
+          width={CANVAS_WIDTH}
           height={CANVAS_HEIGHT}
           className={`game-canvas ${gameState !== 'PLAYING' ? 'blur' : ''}`}
           onMouseMove={handleMouseMove}
@@ -287,61 +287,59 @@ function PixelGame() {
             <h1>Fånga pixlarna. Bemästra kaoset.</h1>
             <h2>Undvik de röda som ger dig minuspoäng..</h2>
 
-               <div className="menu-buttons">
-                   <button className="game-button" onClick={startGame}>STARTA</button>
-                   <a href="/" className="back-link">← Tillbaka</a>
-                 </div>
-               </div>
+            <div className="menu-buttons">
+              <button className="game-button" onClick={startGame}>STARTA</button>
+              <a href="/" className="back-link">← Tillbaka</a>
+            </div>
+          </div>
         )}
 
-       
 
-         {/* Game over menu*/}
+
+        {/* Game over menu*/}
         {gameState === 'ENDED' && (
           <div className="menu-overlay scrollable">
-            
+
             <p>Du samlade ihop:</p>
             <h1>{score} pixlar</h1>
-            
+
             <div className="score-submission">
-              
-              <HighScoreForm 
-                score={score} 
-                onScoreSubmitted={loadLeaderboard} 
+
+              <HighScoreForm
+                score={score}
+                onScoreSubmitted={loadLeaderboard}
               />
 
-              {/* Leaderboarden */}
+              {/* Leaderboard */}
               <div className="leaderboard-container">
                 <h3>TOPP 5 PIXELFÅNGARE</h3>
-                
+
                 {isLoadingLeaderboard ? (
                   <p className="loading-text">Hämtar hjältar...</p>
-                ) : (
+                ) : leaderboard.length > 0 ? (
                   <ul className="leaderboard-list">
-                    {leaderboard.length > 0 ? (
-                      leaderboard.map((entry, index) => (
-                        <li key={entry.id || index} className="leaderboard-item">
-                          <span className="rank">#{index + 1} </span>
-                          <span className="name">{entry.playerName} </span>
-                          <span className="points">{entry.score} p</span>
-                        </li>
-                      ))
-                    ) : (
-                      <p>Inga poäng än. Bli den första!</p>
-                    )}
+                    {leaderboard.map((entry, index) => (
+                      <li key={entry.id || index} className="leaderboard-item">
+                        <span className="rank">#{index + 1} </span>
+                        <span className="name">{entry.playerName} </span>
+                        <span className="points">{entry.score} p</span>
+                      </li>
+                    ))}
                   </ul>
+                ) : (
+                  <p>Inga poäng än. Bli den första!</p>
                 )}
-                </div>
-                  <div className="menu-buttons">
-                    <button className="game-button" onClick={startGame}>SPELA IGEN</button>
-                     <a href="/" className="back-link">← Avsluta spel</a>
-                    </div>
-                 </div>
+              </div>
+              <div className="menu-buttons">
+                <button className="game-button" onClick={startGame}>SPELA IGEN</button>
+                <a href="/" className="back-link">← Avsluta spel</a>
+              </div>
+            </div>
 
-               </div>
+          </div>
         )}
 
-      </div> 
+      </div>
     </div>
   );
 }
